@@ -1,0 +1,86 @@
+/* botão hamburguer */
+.menu-btn {
+    font-size: 25px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* menu lateral */
+.menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* escondido */
+    width: 200px;
+    height: 100%;
+    background: #1e1e1e;
+    padding-top: 60px;
+    transition: 0.3s;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+}
+
+.menu a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+}
+
+.menu a:hover {
+    background: #00ff88;
+    color: black;
+}
+
+.perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px;
+    border-bottom: 1px solid #333;
+}
+
+.perfil span {
+    color: #00ff88;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.menu button {
+    background: #ff4d4d;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    width: 90%;
+    transition: all .3s ease;
+}
+
+.menu button:hover {
+    background: #cc0000;
+    transform: scale(1.04);
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background: #00ff88;
+    color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.avatar-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}

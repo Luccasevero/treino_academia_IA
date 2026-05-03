@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Personal Digital</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="menu-burger.css">
+    <link rel="shortcut icon" href="treino-icon.png" type="image/x-png">
+</head>
+<body>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <div id="menu" class="menu">
+        <div class="perfil">
+            <img id="avatarMenu" class="avatar" src="default.png">
+            <span>lucca.severo@hotmail.com</span>
+        </div>
+        <a href="index.html">🏋️ Gerar Treino</a>
+        <a href="meus-treinos.html">📚 Meus Treinos</a>
+        <a href="perfil.html">👤 Perfil</a>
+        <button onclick="logout()">🚪 Sair</button>
+    </div>
+
+    
+    
+    <div class="container">
+        <h1>🏋️‍♂️ Gerador de Treino</h1>
+        <p>Escolha o músculo que deseja focar hoje:</p>
+        
+        <select id="musculo">
+            <option value="peito">Peito</option>
+            <option value="costas">Costas</option>
+            <option value="pernas">Pernas</option>
+            <option value="ombros">Ombros</option>
+            <option value="biceps">Bíceps</option>
+            <option value="triceps">Tríceps</option>
+            <option value="abdomen">Abdômen</option>
+        </select>
+
+        <select id="nivel">
+            <option value="iniciante">Iniciante</option>
+            <option value="intermediario">Intermediário</option>
+            <option value="avancado">Avançado</option>
+        </select>
+
+        <select id="objetivo">
+            <option value="hipertrofia">Hipertrofia</option>
+            <option value="emagrecimento">Emagrecimento</option>
+            <option value="forca">Força</option>
+        </select>
+
+        <button onclick="gerarTreino()" id="btnGerar">Gerar Treino</button>
+
+        <div id="resultado"></div>
+
+        <button id="btnSalvar" style="display:none;"     onclick="salvarTreino()">
+            💾 Salvar Treino
+        </button>
+        <p id="msgSucesso" style="display:none; color:#00ff88; margin-top:10px;"></p>
+
+        <button onclick="window.location.href='meus-treinos.html'">
+            📚 Ver meus treinos
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+    <script src="auth.js"></script>
+<script>
+    validarToken();
+</script>
+</body>
+</html>

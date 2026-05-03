@@ -1,0 +1,69 @@
+body {
+    font-family: Arial;
+    background: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+
+.login-container {
+    background: #1e1e1e;
+    padding: 40px;
+    border-radius: 15px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #00ff88;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    position: relative;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.spinner {
+    display: none;
+    width: 15px;
+    height: 15px;
+    border: 3px solid #000;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+#msgErro {
+    color: red;
+    margin-top: 10px;
+}
+
+.link {
+    margin-top: 15px;
+}

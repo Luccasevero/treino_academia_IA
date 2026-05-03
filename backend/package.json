@@ -1,0 +1,23 @@
+{
+  "name": "treino-backend",
+  "version": "1.0.0",
+  "description": "Backend do gerador de treino com IA",
+  "main": "src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.3",
+    "node-fetch": "^3.3.2",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}

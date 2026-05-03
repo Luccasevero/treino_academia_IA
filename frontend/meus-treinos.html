@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meus Treinos</title>
+    <link rel="stylesheet" href="meus-treinos.css">
+    <link rel="stylesheet" href="menu-burger.css">
+    <link rel="shortcut icon" href="treino-icon.png" type="image/x-png">
+</head>
+<body>
+
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+    <div id="menu" class="menu">
+        <div class="perfil">
+            <img id="avatarMenu" class="avatar" src="default.png">
+            <span>lucca.severo@hotmail.com</span>
+        </div>
+        <a href="index.html">🏋️ Gerar Treino</a>
+        <a href="meus-treinos.html">📚 Meus Treinos</a>
+        <a href="perfil.html">👤 Perfil</a>
+        <button onclick="logout()">🚪 Sair</button>
+    </div>
+
+<div class="container">
+
+    <h1>📚 Meus Treinos</h1>
+
+    <div id="listaTreinos"></div>
+
+</div>
+
+<script src="meus-treinos.js"></script>
+
+<script src="auth.js"></script>
+<script>
+    validarToken();
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+body {
+    font-family: Arial;
+    background: #121212;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+}
+
+.menu a {
+    display: block;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+}
+
+.menu a:hover {
+    background: #00ff88;
+    color: black;
+}
+
+.container {
+    width: 600px;
+}
+
+.logout {
+    float: right;
+    margin-bottom: 10px;
+    background: #ff4d4d;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.treino {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+    border-left: 5px solid #00ff88;
+}
+
+.treino h3 {
+    color: #00ff88;
+}
+
+.btnExcluir {
+    display: block;
+    margin-left: auto;
+    background: #ff4d4d;
+    border: none;
+    padding: 6px;
+    margin-top: 40px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all .3s ;
+}
+
+.btnExcluir:hover {
+    transform: scale(1.05);
+    background: #cc0000;
+    color: white;
+}
