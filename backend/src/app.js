@@ -18,6 +18,10 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor rodando na porta ${PORT}`);
+});
+
 //perfil
 app.get("/perfil", autenticar, async (req, res) => {
     const result = await pool.query(
@@ -237,11 +241,8 @@ app.delete("/treinos/:id", autenticar, async (req, res) => {
 //
 // 🚀 START SERVER
 //
-app.listen(PORT, async () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log("Servidor rodando na porta " + PORT);
-
-    const result = await pool.query("SELECT current_database()");
-    console.log("BANCO ATUAL:", result.rows[0]);
 });
 
 app.get("/validar-token", autenticar, async (req, res) => {
