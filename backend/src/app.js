@@ -231,6 +231,10 @@ app.delete("/treinos/:id", autenticar, async (req, res) => {
     }
 });
 
+
+app.get("/", (req, res) => {
+    res.send("API do Treino Academia está Online! 🚀");
+});
 //
 // 🚀 START SERVER
 //
