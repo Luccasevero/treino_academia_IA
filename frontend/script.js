@@ -53,7 +53,7 @@ async function gerarTreino() {
     
 
     try {
-        const res = await fetch(`http://localhost:3000/treino?musculo=${musculo}&nivel=${nivel}&objetivo=${objetivo}`);
+        const res = await fetch(`https://treino-academia-ia.onrender.com/treino?musculo=${musculo}&nivel=${nivel}&objetivo=${objetivo}`);
         let html = await res.text();
 
         // 🔥 salva o treino
@@ -89,7 +89,7 @@ async function salvarTreino() {
     const objetivo = document.getElementById("objetivo").value;
 
     try {
-        const res = await fetch("http://localhost:3000/salvar-treino", {
+        const res = await fetch("https://treino-academia-ia.onrender.com/salvar-treino", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -120,7 +120,7 @@ async function salvarTreino() {
 }
 
 async function carregarAvatarMenu() {
-    const res = await fetch("http://localhost:3000/perfil", {
+    const res = await fetch("https://treino-academia-ia.onrender.com/perfil", {
         headers: {
             Authorization: "Bearer " + token
         }

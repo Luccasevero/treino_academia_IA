@@ -34,7 +34,7 @@ let avatarBase64 = "";
 let avatarAtual = "";
 //carrega
 async function carregarPerfil() {
-    const res = await fetch("http://localhost:3000/perfil", {
+    const res = await fetch("https://treino-academia-ia.onrender.com/perfil", {
         headers: {
             Authorization: "Bearer " + token
         }
@@ -83,7 +83,7 @@ async function salvarPerfil() {
     return;
     }
 
-    await fetch("http://localhost:3000/perfil", {
+    await fetch("https://treino-academia-ia.onrender.com/perfil", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -107,7 +107,7 @@ async function salvarPerfil() {
 async function trocarSenha() {
     const senha = document.getElementById("novaSenha").value;
 
-    await fetch("http://localhost:3000/senha", {
+    await fetch("https://treino-academia-ia.onrender.com/login", {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
@@ -120,7 +120,7 @@ async function trocarSenha() {
 }
 
 async function carregarAvatarMenu() {
-    const res = await fetch("http://localhost:3000/perfil", {
+    const res = await fetch("https://treino-academia-ia.onrender.com/login", {
         headers: {
             Authorization: "Bearer " + token
         }

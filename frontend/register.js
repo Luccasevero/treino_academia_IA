@@ -18,7 +18,7 @@ async function register() {
             msg.innerText = "Preencha todos os campos";
             return;
         }
-        const res = await fetch("http://localhost:3000/register", {
+        const res = await fetch("https://treino-academia-ia.onrender.com/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

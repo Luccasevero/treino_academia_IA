@@ -35,7 +35,7 @@ async function carregarTreinos() {
     div.innerHTML = "Carregando...";
 
     try {
-        const res = await fetch("http://localhost:3000/meus-treinos", {
+        const res = await fetch("https://treino-academia-ia.onrender.com/meus-treinos", {
             headers: {
                 "Authorization": "Bearer " + token
             }
@@ -74,7 +74,7 @@ async function excluirTreino(id) {
     if (!confirm("Deseja excluir este treino?")) return;
 
     try {
-        await fetch(`http://localhost:3000/treinos/${id}`, {
+        await fetch(`https://treino-academia-ia.onrender.com/treinos/${id}`, {
             method: "DELETE",
             headers: {
                 "Authorization": "Bearer " + token
@@ -97,7 +97,7 @@ function logout() {
 carregarTreinos();
 
 async function carregarAvatarMenu() {
-    const res = await fetch("http://localhost:3000/perfil", {
+    const res = await fetch("https://treino-academia-ia.onrender.com/perfil", {
         headers: {
             Authorization: "Bearer " + token
         }

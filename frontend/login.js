@@ -13,7 +13,7 @@ async function login() {
     spinner.style.display = "inline-block";
 
     try {
-        const res = await fetch("http://localhost:3000/login", {
+        const res = await fetch("https://treino-academia-ia.onrender.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
