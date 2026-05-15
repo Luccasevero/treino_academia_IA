@@ -7,6 +7,17 @@ body {
     padding-top: 50px;
 }
 
+body {
+    font-size: 18px;
+}
+
+/* Estilo aplicado APENAS em telas de até 768px (celulares e tablets) */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* Diminui um pouco a letra no celular */
+    }
+}
+
 .container {
     background-color: #1e1e1e;
     padding: 100px;
@@ -175,4 +186,9 @@ h2, h3 {
     background: #1e1e1e;
     padding: 20px;
     border-radius: 12px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
