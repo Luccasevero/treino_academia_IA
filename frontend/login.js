@@ -27,7 +27,12 @@ async function login() {
             throw new Error(erro);
         }
 
-        const data = await res.json();
+        const text = await res.text(); // Lê primeiro como texto puro
+        if (!text) {
+            throw new Error("O servidor respondeu com o corpo vazio. Verifique os logs de CORS.");
+        }
+        
+        const data = JSON.parse(text);
 
         // 💾 salva token
         localStorage.setItem("token", data.token);
