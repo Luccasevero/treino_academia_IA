@@ -144,7 +144,7 @@ async function carregarAvatarMenu() {
     }
 
 
-    const data = await res.json();
+    const data = await response.json();
 
 
     const avatarEl = document.getElementById("avatarMenu");
