@@ -120,11 +120,29 @@ async function salvarTreino() {
 }
 
 async function carregarAvatarMenu() {
-    const res = await fetch("https://treino-academia-ia.onrender.com/perfil", {
+    const token = localStorage.getItem("token"); // ou onde você guarda o token
+
+    // Se não tem token, nem tenta buscar o perfil, manda direto para o login
+    if (!token) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    const response = await fetch("https://treino-academia-ia.onrender.com/perfil", {
         headers: {
-            Authorization: "Bearer " + token
+            "Authorization": `Bearer ${token}`
         }
     });
+
+    if (response.ok) {
+        const dados = await response.json();
+        // preenche o avatar...
+    } else {
+        // Se o token expirou ou é inválido, limpa e desloga
+        localStorage.removeItem("token");
+        window.location.href = "login.html";
+    }
+
 
     const data = await res.json();
 

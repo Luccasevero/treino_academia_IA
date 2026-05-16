@@ -7,7 +7,8 @@ async function validarToken() {
     }
 
     try {
-        const res = await fetch("http://localhost:3000/validar-token", {
+        // MUDADO: Agora aponta para o seu servidor do Render
+        const res = await fetch("https://treino-academia-ia.onrender.com/validar-token", {
             headers: {
                 Authorization: "Bearer " + token
             }
@@ -20,3 +21,6 @@ async function validarToken() {
         window.location.href = "login.html";
     }
 }
+
+// Executa a função assim que o arquivo é carregado na página
+validarToken();
