@@ -8,12 +8,11 @@ async function login() {
 
     msgErro.innerText = "";
 
-    // loading
+    // Ativa o loading
     btn.disabled = true;
     spinner.style.display = "inline-block";
 
     try {
-        // 🛠️ APENAS MUDOU AQUI: Adicionado o "-1" antes do .onrender
         const res = await fetch("https://treino-academia-ia-1.onrender.com/login", {
             method: "POST",
             headers: {
@@ -22,30 +21,35 @@ async function login() {
             body: JSON.stringify({ email, senha })
         });
 
-        if (!res.ok) {
-            const erro = await res.text();
-            throw new Error(erro);
+        // Lê a resposta primeiro como texto puro para evitar quebra de JSON vazio
+        const text = await res.text();
+
+        // Se o servidor respondeu com sucesso (200), mas o corpo veio totalmente vazio (CORS bloqueando)
+        if (res.ok && !text) {
+            throw new Error("O servidor respondeu com o corpo vazio. Verifique os logs de CORS no backend.");
         }
 
-        const text = await res.text(); // Lê primeiro como texto puro
-        if (!text) {
-            throw new Error("O servidor respondeu com o corpo vazio. Verifique os logs de CORS.");
+        // Se o servidor respondeu com algum erro (Ex: 400 Usuário não encontrado, 500 Erro interno)
+        if (!res.ok) {
+            throw new Error(text || "Erro desconhecido no servidor.");
         }
-        
+
+        // Se chegou aqui e tem texto, transforma em objeto JSON com segurança
         const data = JSON.parse(text);
 
-        // 💾 salva token
+        // 💾 Salva os dados no navegador
         localStorage.setItem("token", data.token);
         localStorage.setItem("email", email);
         
-        // 🔥 redireciona
+        // 🔥 Redireciona para a tela principal
         window.location.href = "index.html";
 
     } catch (error) {
+        // Exibe o erro na tela (abaixo do botão entrar)
         msgErro.innerText = error.message;
     }
 
-    // volta botão
+    // Desativa o loading e devolve o botão ao estado normal
     btn.disabled = false;
     spinner.style.display = "none";
 }
