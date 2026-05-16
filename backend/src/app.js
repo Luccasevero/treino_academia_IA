@@ -9,6 +9,7 @@ import cors from "cors";
 import aiProvider from "./providers/aiProvider.js";
 
 const app = express();
+const cors = require('cors');
 
 app.use(cors());
 app.use(express.json());
