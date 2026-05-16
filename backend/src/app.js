@@ -131,29 +131,29 @@ app.post("/login", async (req, res) => {
     const { email, senha } = req.body;
 
     try {
-        // 🟢 MUDANÇA PARA MONGODB (Usando o seu Model de Usuário, geralmente chamado User ou Usuario)
-        // Se o seu model se chamar Usuario, mude para Usuario.findOne
-        const user = await User.findOne({ email: email });
+        // 🟢 BUSCA NO MONGODB: Procura o usuário pelo e-mail
+        // (Troque 'User' pelo nome do seu Model de usuário se for diferente, ex: Usuario)
+        const user = await User.findOne({ email });
 
-        // Se não encontrar o usuário no Mongo
+        // Se o e-mail não existir no banco
         if (!user) return res.status(400).send("Usuário não encontrado");
 
-        // O bcrypt continua igual, mas repare se no Mongo a senha está salva como 'senha'
+        // Valida a senha criptografada com o bcrypt
         const senhaValida = await bcrypt.compare(senha, user.senha);
         if (!senhaValida) return res.status(400).send("Senha incorreta");
 
-        // No MongoDB, o identificador padrão é _id (com underline)
+        // ⚠️ ATENÇÃO: No MongoDB, o ID se chama '_id' (com underline)
         const token = jwt.sign(
             { id: user._id }, 
             process.env.JWT_SECRET,
             { expiresIn: "1d" }
         );
 
-        // Envia o token de volta pro front
+        // Retorna o token como JSON válido para o frontend
         res.json({ token });
 
     } catch (error) {
-        console.error("Erro no login do servidor:", error);
+        console.error("Erro interno no login:", error);
         res.status(500).send("Erro no login");
     }
 });
