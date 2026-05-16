@@ -13,7 +13,8 @@ async function login() {
     spinner.style.display = "inline-block";
 
     try {
-        const res = await fetch("https://treino-academia-ia.onrender.com/login", {
+        // 🛠️ APENAS MUDOU AQUI: Adicionado o "-1" antes do .onrender
+        const res = await fetch("https://treino-academia-ia-1.onrender.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -31,6 +32,7 @@ async function login() {
         // 💾 salva token
         localStorage.setItem("token", data.token);
         localStorage.setItem("email", email);
+        
         // 🔥 redireciona
         window.location.href = "index.html";
 
