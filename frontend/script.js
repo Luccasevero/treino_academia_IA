@@ -143,10 +143,6 @@ async function carregarAvatarMenu() {
         window.location.href = "login.html";
     }
 
-
-    const data = await response.json();
-
-
     const avatarEl = document.getElementById("avatarMenu");
 
     if (avatarEl) { // 🔥 evita erro se não existir na página
