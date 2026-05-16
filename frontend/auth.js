@@ -5,7 +5,7 @@ async function validarToken() {
         return;
     }
     try {
-        const res = await fetch("https://treino-academia-ia-1.onrender.com/validar-token", {
+        const res = await fetch("https://treino-academia-ia.onrender.com/validar-token", {
             headers: { Authorization: "Bearer " + token }
         });
         if (!res.ok) throw new Error();
