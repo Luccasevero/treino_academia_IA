@@ -120,9 +120,8 @@ async function salvarTreino() {
 }
 
 async function carregarAvatarMenu() {
-    const token = localStorage.getItem("token"); // ou onde você guarda o token
+    const token = localStorage.getItem("token");
 
-    // Se não tem token, nem tenta buscar o perfil, manda direto para o login
     if (!token) {
         window.location.href = "login.html";
         return;
@@ -135,22 +134,23 @@ async function carregarAvatarMenu() {
     });
 
     if (response.ok) {
-        const dados = await response.json();
-        // preenche o avatar...
+        const dados = await response.json(); 
+        
+        const avatarEl = document.getElementById("avatarMenu");
+
+        if (avatarEl) { 
+            if (dados && dados.avatar) {
+                avatarEl.src = dados.avatar;
+            } else {
+                avatarEl.src = "default.png";
+            }
+        }
+
     } else {
         // Se o token expirou ou é inválido, limpa e desloga
         localStorage.removeItem("token");
         window.location.href = "login.html";
     }
-
-    const avatarEl = document.getElementById("avatarMenu");
-
-    if (avatarEl) { // 🔥 evita erro se não existir na página
-        if (data.avatar) {
-            avatarEl.src = data.avatar;
-        } else {
-            avatarEl.src = "default.png";
-        }
-    }
 }
+
 carregarAvatarMenu();
