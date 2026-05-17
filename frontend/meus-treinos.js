@@ -32,14 +32,22 @@ document.addEventListener("click", function(event) {
 async function carregarTreinos() {
     const div = document.getElementById("listaTreinos");
 
+    if (!div) return; // Proteção caso a div não exista na página
+
     div.innerHTML = "Carregando...";
 
     try {
-        const res = await fetch("https://treino-academia-ia-1.onrender.com/meus-treinos", {
+        const token = localStorage.getItem("token"); 
+
+        const res = await fetch("https://treino-academia-ia.onrender.com/meus-treinos", {
             headers: {
                 "Authorization": "Bearer " + token
             }
         });
+
+        if (!res.ok) {
+            throw new Error("Erro na resposta do servidor: Status " + res.status);
+        }
 
         const treinos = await res.json();
 
@@ -51,22 +59,22 @@ async function carregarTreinos() {
         div.innerHTML = "";
 
         treinos.forEach(t => {
-    const conteudoFormatado = t.conteudo.replace(/\n/g, "<br>");
+            const textoTreino = t.conteudo ? t.conteudo.replace(/\n/g, "<br>") : "";
 
-    div.innerHTML += `
-        <div class="treino">
-            <h3>${t.musculo} - ${t.objetivo}</h3>
-            ${conteudoFormatado}
-            <button class="btnExcluir" onclick="excluirTreino(${t.id})">
-                🗑 Excluir
-            </button>
-        </div>
-    `;
-});
+            div.innerHTML += `
+                <div class="treino">
+                    <h3>${t.musculo} - ${t.objetivo}</h3>
+                    <p>${textoTreino}</p>
+                    <button class="btnExcluir" onclick="excluirTreino(${t.id})">
+                        🗑 Excluir
+                    </button>
+                </div>
+            `;
+        });
 
     } catch (error) {
         div.innerHTML = "<p>Erro ao carregar treinos</p>";
-        console.error(error);
+        console.error("Erro no carregarTreinos:", error);
     }
 }
 
