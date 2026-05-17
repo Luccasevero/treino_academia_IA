@@ -35,7 +35,7 @@ async function carregarTreinos() {
     div.innerHTML = "Carregando...";
 
     try {
-        const res = await fetch("https://treino-academia-ia.onrender.com/meus-treinos", {
+        const res = await fetch("https://treino-academia-ia-1.onrender.com/meus-treinos", {
             headers: {
                 "Authorization": "Bearer " + token
             }
