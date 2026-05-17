@@ -127,7 +127,7 @@ async function carregarAvatarMenu() {
         return;
     }
 
-    const response = await fetch("https://treino-academia-ia.onrender.com/perfil", {
+    const response = await fetch("https://treino-academia-ia-1.onrender.com/perfil", {
         headers: {
             "Authorization": `Bearer ${token}`
         }
