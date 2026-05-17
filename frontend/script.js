@@ -89,7 +89,7 @@ async function salvarTreino() {
     const objetivo = document.getElementById("objetivo").value;
 
     try {
-        const res = await fetch("https://treino-academia-ia.onrender.com/salvar-treino", {
+        const res = await fetch("https://treino-academia-ia-1.onrender.com/salvar-treino", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
