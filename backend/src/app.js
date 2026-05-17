@@ -35,7 +35,7 @@ function autenticar(req, res, next) {
 // 👤 PERFIL
 app.get("/perfil", autenticar, async (req, res) => {
     const result = await pool.query(
-        "SELECT id, email, nome, avatar FROM usuarios WHERE id = $1",
+        "SELECT id, email, nome, avatar FROM usuarios WHERE usuario_id = $1",
         [req.userId]
     );
     res.json(result.rows[0]);
@@ -51,7 +51,7 @@ app.put("/perfil", autenticar, async (req, res) => {
         }
 
         const result = await pool.query(
-            "SELECT * FROM usuarios WHERE id = $1",
+            "SELECT * FROM usuarios WHERE usuario_id = $1",
             [req.userId]
         );
 
@@ -62,7 +62,7 @@ app.put("/perfil", autenticar, async (req, res) => {
         avatar = avatar || usuario.avatar;
 
         await pool.query(
-            "UPDATE usuarios SET nome=$1, email=$2, avatar=$3 WHERE id=$4",
+            "UPDATE usuarios SET nome=$1, email=$2, avatar=$3 WHERE usuario_id=$4",
             [nome, email, avatar, req.userId]
         );
 
@@ -80,7 +80,7 @@ app.put("/senha", autenticar, async (req, res) => {
     const senhaHash = await bcrypt.hash(senha, 10);
 
     await pool.query(
-        "UPDATE usuarios SET senha=$1 WHERE id=$2",
+        "UPDATE usuarios SET senha=$1 WHERE usuario_id=$2",
         [senhaHash, req.userId]
     );
 
@@ -169,7 +169,7 @@ app.post("/salvar-treino", autenticar, async (req, res) => {
         const { musculo, nivel, objetivo, conteudo } = req.body;
 
         await pool.query(
-            "INSERT INTO treinos (musculo, nivel, objetivo, conteudo, id) VALUES ($1,$2,$3,$4,$5)",
+            "INSERT INTO treinos (musculo, nivel, objetivo, conteudo, usuario_id) VALUES ($1,$2,$3,$4,$5)",
             [musculo, nivel, objetivo, conteudo, req.userId]
         );
 
@@ -185,7 +185,7 @@ app.post("/salvar-treino", autenticar, async (req, res) => {
 app.get("/meus-treinos", autenticar, async (req, res) => {
     try {
         const result = await pool.query(
-            "SELECT * FROM treinos WHERE id = $1 ORDER BY id DESC",
+            "SELECT * FROM treinos WHERE id = $1 ORDER BY usuario_id DESC",
             [req.userId]
         );
 
