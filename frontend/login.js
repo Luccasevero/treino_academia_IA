@@ -45,8 +45,8 @@ async function login() {
         window.location.href = "index.html";
 
     } catch (error) {
-        // Exibe o erro na tela (abaixo do botão entrar)
-        msgErro.innerText = error.message;
+        console.error("Erro completo ao salvar:", error);
+        alert("Falha ao salvar: " + error.message);
     }
 
     // Desativa o loading e devolve o botão ao estado normal
