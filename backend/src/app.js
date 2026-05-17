@@ -169,7 +169,7 @@ app.post("/salvar-treino", autenticar, async (req, res) => {
         const { musculo, nivel, objetivo, conteudo } = req.body;
 
         await pool.query(
-            "INSERT INTO treinos (musculo, nivel, objetivo, conteudo, usuario_id) VALUES ($1,$2,$3,$4,$5)",
+            "INSERT INTO treinos (musculo, nivel, objetivo, conteudo, id) VALUES ($1,$2,$3,$4,$5)",
             [musculo, nivel, objetivo, conteudo, req.userId]
         );
 
@@ -185,7 +185,7 @@ app.post("/salvar-treino", autenticar, async (req, res) => {
 app.get("/meus-treinos", autenticar, async (req, res) => {
     try {
         const result = await pool.query(
-            "SELECT * FROM treinos WHERE usuario_id = $1 ORDER BY id DESC",
+            "SELECT * FROM treinos WHERE id = $1 ORDER BY id DESC",
             [req.userId]
         );
 
@@ -203,7 +203,7 @@ app.delete("/treinos/:id", autenticar, async (req, res) => {
 
     try {
         await pool.query(
-            "DELETE FROM treinos WHERE id = $1 AND usuario_id = $2",
+            "DELETE FROM treinos WHERE id = $1 AND id = $2",
             [id, req.userId]
         );
 
