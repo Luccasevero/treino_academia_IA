@@ -120,7 +120,7 @@ async function trocarSenha() {
 }
 
 async function carregarAvatarMenu() {
-    const res = await fetch("https://treino-academia-ia.onrender.com/login", {
+    const res = await fetch("https://treino-academia-ia-1.onrender.com/login", {
         headers: {
             Authorization: "Bearer " + token
         }
