@@ -34,7 +34,7 @@ let avatarBase64 = "";
 let avatarAtual = "";
 //carrega
 async function carregarPerfil() {
-    const res = await fetch("https://treino-academia-ia.onrender.com/perfil", {
+    const res = await fetch("https://treino-academia-ia-1.onrender.com/perfil", {
         headers: {
             Authorization: "Bearer " + token
         }
